@@ -19,9 +19,7 @@ namespace whoami.Controllers
         {
             var hostName = Dns.GetHostName();
             var nics = GetIpsFromNics();
-
-            var result = new JsonResult(new { hostName, nics }, new JsonSerializerSettings() { Formatting = Formatting.Indented });
-
+            var result = new JsonResult(new { hostName, nics, this.HttpContext.Request.Headers }, new JsonSerializerSettings() { Formatting = Formatting.Indented });
             return result;
         }
 
