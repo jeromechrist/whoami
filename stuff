@@ -1,0 +1,8 @@
+#to automate
+docker manifest create jeromechrist/whoami jeromechrist/whoami
+docker manifest annotate jeromechrist/whoami jeromechrist/whoami --os=linux --arch=amd64
+
+docker manifest create -a jeromechrist/whoami jeromechrist/whoami:arm32v7
+docker manifest annotate jeromechrist/whoami jeromechrist/whoami:arm32v7 --os=linux --arch=arm --variant=v7
+
+docker manifest inspect --verbose jeromechrist/whoami
