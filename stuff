@@ -1,5 +1,6 @@
 #to automate
 #also this https://www.hanselman.com/blog/OptimizingASPNETCoreDockerImageSizes.aspx
+#https://developer.ibm.com/linuxonpower/2017/07/27/create-multi-architecture-docker-image/
 
 docker manifest create jeromechrist/whoami jeromechrist/whoami
 docker manifest annotate jeromechrist/whoami jeromechrist/whoami --os=linux --arch=amd64
