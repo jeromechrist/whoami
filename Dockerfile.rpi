@@ -1,4 +1,4 @@
-FROM microsoft/dotnet:2.1-sdk-bionic AS build
+FROM microsoft/dotnet:2.2-sdk-bionic AS build
 WORKDIR /app
 
 # copy csproj and restore as distinct layers
@@ -12,7 +12,7 @@ COPY src/. .
 #RUN dotnet add package ILLink.Tasks -v 0.1.5-preview-1841731 -s https://dotnet.myget.org/F/dotnet-core/api/v3/index.json
 RUN dotnet publish -c Release -r linux-arm -o out /p:ShowLinkerSizeComparison=true
 
-FROM microsoft/dotnet:2.1.2-runtime-deps-bionic-arm32v7 as runtime
+FROM microsoft/dotnet:2.2.2-runtime-deps-bionic-arm32v7 as runtime
 WORKDIR /app
 COPY --from=build /app/out ./
 EXPOSE 80
