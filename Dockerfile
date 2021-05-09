@@ -1,4 +1,4 @@
-FROM microsoft/dotnet:2.1.301-sdk-alpine AS build
+FROM microsoft/dotnet:2.2.104-sdk-alpine AS build
 WORKDIR /app
 
 # copy csproj and restore as distinct layers
@@ -9,7 +9,7 @@ RUN dotnet restore
 COPY src/. .
 RUN dotnet publish -c Release -o out
 
-FROM microsoft/dotnet:2.1.1-aspnetcore-runtime AS runtime
+FROM microsoft/dotnet:2.2.2-aspnetcore-runtime AS runtime
 WORKDIR /app
 COPY --from=build /app/out ./
 
